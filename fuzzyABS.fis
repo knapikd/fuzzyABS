@@ -1,0 +1,33 @@
+[System]
+Name='fuzzyABS'
+Type='mamdani'
+Version=2.0
+NumInputs=1
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='input1'
+Range=[0 1]
+NumMFs=3
+MF1='smallSlip':'trimf',[-0.5 0 0.25]
+MF2='desiredSlip':'trimf',[0.2 0.3 0.4]
+MF3='bigSlip':'trimf',[0.35 1 1]
+
+[Output1]
+Name='output1'
+Range=[0 1]
+NumMFs=3
+MF1='smallCtrl':'trimf',[0 0 0.35]
+MF2='fineCtrl':'trimf',[0.3 0.37 0.4]
+MF3='bigCtrl':'trimf',[0.39 0.6 0.6]
+
+[Rules]
+1, 3 (1) : 1
+2, 2 (1) : 1
+3, 1 (1) : 1
